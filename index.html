@@ -1,47 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>charity: water — Water Changes Everything</title>
+
+  <!-- Simple, beginner‑friendly starter (single file) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Basic theme colors you can tweak ===== */
+    :root{
+      --blue:#0c3b66;    /* headings, accents */
+      --gold:#ffd24d;    /* buttons, subheads */
+      --text:#0b2239;    /* body text */
+      --muted:#5b6b7a;   /* secondary text */
+      --sky:#6f9bb4;     /* top bar */
+      --bg:#f5f7fb;      /* page background */
+      --white:#fff;
+    }
+
+    /* ===== Global resets ===== */
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    a{color:inherit}
+
+    /* ===== Header ===== */
+    header{background:var(--sky)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .brand img{height:28px;width:auto}
+    .links{display:flex;gap:14px}
+    .links a{text-decoration:none;font-weight:600;padding:6px 10px;border-radius:999px}
+    .links a.cta{border:2px solid #0b2239}
+
+    /* Mobile menu using <details> (no JS) */
+    details.menu{display:none}
+    details.menu summary{list-style:none;cursor:pointer;font-size:26px;line-height:1;padding:6px 10px;border-radius:8px}
+    details.menu[open] summary{background:rgba(0,0,0,.06)}
+    details.menu nav{display:flex;flex-direction:column;gap:8px;margin-top:8px;background:var(--white);padding:10px;border:1px solid #e5e7eb;border-radius:12px}
+
+    /* ===== Hero ===== */
+    .hero{color:var(--white);min-height:64vh;display:grid;place-items:center;text-align:left;position:relative}
+    .hero::before{content:"";position:absolute;inset:0;background:
+      linear-gradient(rgba(12,59,102,.55), rgba(12,59,102,.35)),
+      url('hero-water-1600w.jpg') center/cover no-repeat;z-index:-1}
+    .hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:clamp(32px,6vw,48px);line-height:1.15;margin:0 0 8px}
+    .hero p{color:var(--gold);max-width:60ch;margin:0 0 22px}
+    .btn{display:inline-block;background:var(--gold);color:#0b2239;text-decoration:none;font-weight:800;padding:12px 22px;border-radius:999px}
+
+    /* ===== Sections ===== */
+    section{padding:56px 0}
+    h2{font-family:"Playfair Display",Georgia,serif;color:var(--blue);font-size:clamp(24px,4vw,36px);margin:0 0 10px}
+    .lead{color:var(--muted);max-width:70ch;margin:0 0 22px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}
+
+    /* Ribbon */
+    .ribbon{background:#d3e2eb;color:#0b2239}
+    .ribbon .container{padding:10px 0;text-align:center;font-weight:700}
+
+    /* Footer */
+    footer{background:#0b2239;color:#c8d3df}
+    .foot{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+    .foot a{color:#c8d3df;text-decoration:none;margin-left:12px}
+
+    /* ===== Responsive: simple single breakpoint ===== */
+    @media (max-width:700px){
+      .links{display:none}           /* hide desktop links */
+      details.menu{display:block}    /* show mobile menu */
+      .hero p{max-width:46ch}
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="topbar container">
+      <a class="brand" href="#home">
+        <img src="logo-charity-water.png" alt="charity: water" />
+      </a>
+
+      <!-- Desktop links -->
+      <nav class="links" aria-label="Main">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#why">Why Water?</a>
+        <a class="cta" href="#give">Give</a>
+      </nav>
+
+      <!-- Mobile menu (click “Menu”) -->
+      <details class="menu">
+        <summary aria-label="Open menu">☰ Menu</summary>
+        <nav aria-label="Mobile menu">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#why">Why Water?</a>
+          <a class="cta" href="#give">Give</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <main id="home">
     <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
+      <div class="container">
+        <h1>Water Changes Everything. <span style="white-space:nowrap">So Can You.</span></h1>
+        <p>From health to education to opportunity, clean water unlocks it all. Every gift funds clean water—and we’ll show you the lives it transforms.</p>
+        <a class="btn" href="#give">Give Clean Water Today</a>
+      </div>
     </section>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
-
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
+    <!-- ===== Why ===== -->
+    <section id="why">
+      <div class="container">
+        <h2>Why Water?</h2>
+        <p class="lead">Clean water drives health, education, and opportunity for communities around the world.</p>
+        <div class="cards">
+          <div class="card"><h3>Health</h3><p>Clean water reduces disease and improves wellbeing.</p></div>
+          <div class="card"><h3>Education</h3><p>Kids—especially girls—spend less time walking for water and more time in school.</p></div>
+          <div class="card"><h3>Opportunity</h3><p>Reliable water unlocks work, farming, and time for what matters.</p></div>
         </div>
+      </div>
     </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
+    <!-- ===== Impact Ribbon ===== -->
+    <section class="ribbon" aria-label="Impact snapshot">
+      <div class="container">
+        <p><strong>100%</strong> of public donations fund water projects • <strong>Transparent</strong> reporting • <strong>Local partners</strong></p>
+      </div>
     </section>
+
+    <!-- ===== Give ===== -->
+    <section id="give">
+      <div class="container">
+        <h2>Make a Gift</h2>
+        <p class="lead">Fuel a project, start a monthly gift, or sponsor a community.</p>
+        <div class="cards" style="max-width:520px">
+          <a class="btn" href="#">$25</a>
+          <a class="btn" href="#">$50</a>
+          <a class="btn" href="#">$100</a>
+          <a class="btn" href="#">Other</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="foot container">
+      <p>© charity: water</p>
+      <nav aria-label="Footer"><a href="#about">About</a><a href="#why">Why Water</a><a href="#give">Give</a></nav>
+    </div>
+  </footer>
 </body>
 </html>
